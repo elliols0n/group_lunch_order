@@ -1,0 +1,64 @@
+<!-- Validation failure messages -->
+<% if @order.errors.any? %>
+  <% @order.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Order #<%= @order.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_order/<%= @order.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @order.user_id %>">
+      </div>
+
+      <!-- Label and input for dish_id -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+
+        <input type="text" id="dish_id" name="dish_id" placeholder="Dish" class="form-control" value="<%= @order.dish_id %>">
+      </div>
+
+      <!-- Label and input for user_comment -->
+      <div class="form-group">
+        <label for="user_comment" class="control-label">
+          User comment
+        </label>
+
+        <input type="text" id="user_comment" name="user_comment" placeholder="User comment" class="form-control" value="<%= @order.user_comment %>">
+      </div>
+
+      <!-- Label and input for group_order_id -->
+      <div class="form-group">
+        <label for="group_order_id" class="control-label">
+          Group order
+        </label>
+
+        <input type="text" id="group_order_id" name="group_order_id" placeholder="Group order" class="form-control" value="<%= @order.group_order_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Order
+      </button>
+      or
+      <a href="/orders/<%= @order.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

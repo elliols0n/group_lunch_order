@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Order resource:
+  # CREATE
+  get "/orders/new", :controller => "orders", :action => "new"
+  post "/create_order", :controller => "orders", :action => "create"
+
+  # READ
+  get "/orders", :controller => "orders", :action => "index"
+  get "/orders/:id", :controller => "orders", :action => "show"
+
+  # UPDATE
+  get "/orders/:id/edit", :controller => "orders", :action => "edit"
+  post "/update_order/:id", :controller => "orders", :action => "update"
+
+  # DELETE
+  get "/delete_order/:id", :controller => "orders", :action => "destroy"
+  #------------------------------
+
   # Routes for the Menu resource:
   # CREATE
   get "/menus/new", :controller => "menus", :action => "new"
