@@ -1,4 +1,14 @@
 class OrdersController < ApplicationController
+  before_action :current_user_must_be_order_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_order_user
+    order = Order.find(params[:id])
+
+    unless current_user == order.user
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @orders = Order.all
 
