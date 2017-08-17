@@ -10,7 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.page(params[:page]).per(10)
+    @q = Order.ransack(params[:q])
+    @orders = @q.result(:distinct => true).includes(:user, :dish, :group_order).page(params[:page]).per(10)
 
     render("orders/index.html.erb")
   end

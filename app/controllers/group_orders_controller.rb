@@ -1,6 +1,7 @@
 class GroupOrdersController < ApplicationController
   def index
-    @group_orders = GroupOrder.page(params[:page]).per(10)
+    @q = GroupOrder.ransack(params[:q])
+    @group_orders = @q.result(:distinct => true).includes(:restaurant, :orders).page(params[:page]).per(10)
 
     render("group_orders/index.html.erb")
   end
