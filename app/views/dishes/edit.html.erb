@@ -33,7 +33,7 @@
           Menu
         </label>
 
-        <input type="text" id="menu_id" name="menu_id" placeholder="Menu" class="form-control" value="<%= @dish.menu_id %>">
+        <%= select_tag(:menu_id, options_from_collection_for_select(Menu.all, :id, :restaurant_id, @dish.menu_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
