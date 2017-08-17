@@ -12,7 +12,13 @@
       <dd><%= @group_order.price %></dd>
 
       <dt>Restaurant</dt>
-      <dd><%= @group_order.restaurant_id %></dd>
+      <dd>
+        <% if @group_order.restaurant.present? %>
+          <a href="/restaurants/<%= @group_order.restaurant_id %>">
+            <%= @group_order.restaurant.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

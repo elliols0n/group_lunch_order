@@ -18,10 +18,28 @@
 
       <% @orders.each do |order| %>
       <tr>
-        <td><%= order.user.email %></td>
-        <td><%= order.dish.name %></td>
+        <td>
+          <% if order.user.present? %>
+            <a href="/users/<%= order.user.id %>">
+              <%= order.user.email %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if order.dish.present? %>
+            <a href="/dishes/<%= order.dish.id %>">
+              <%= order.dish.name %>
+            </a>
+          <% end %>
+        </td>
         <td><%= order.user_comment %></td>
-        <td><%= order.group_order.created_at %></td>
+        <td>
+          <% if order.group_order.present? %>
+            <a href="/group_orders/<%= order.group_order.id %>">
+              <%= order.group_order.created_at %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/orders/<%= order.id %>" class="btn btn-primary">Show</a>
           

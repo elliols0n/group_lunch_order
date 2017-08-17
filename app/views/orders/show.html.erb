@@ -6,16 +6,34 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @order.user_id %></dd>
+      <dd>
+        <% if @order.user.present? %>
+          <a href="/users/<%= @order.user_id %>">
+            <%= @order.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Dish</dt>
-      <dd><%= @order.dish_id %></dd>
+      <dd>
+        <% if @order.dish.present? %>
+          <a href="/dishes/<%= @order.dish_id %>">
+            <%= @order.dish.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>User comment</dt>
       <dd><%= @order.user_comment %></dd>
 
       <dt>Group order</dt>
-      <dd><%= @order.group_order_id %></dd>
+      <dd>
+        <% if @order.group_order.present? %>
+          <a href="/group_orders/<%= @order.group_order_id %>">
+            <%= @order.group_order.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

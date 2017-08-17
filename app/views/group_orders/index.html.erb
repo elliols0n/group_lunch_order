@@ -19,7 +19,13 @@
       <tr>
         <td><img src='<%= group_order.receipt %>' class='img-responsive'></td>
         <td><%= group_order.price %></td>
-        <td><%= group_order.restaurant.name %></td>
+        <td>
+          <% if group_order.restaurant.present? %>
+            <a href="/restaurants/<%= group_order.restaurant.id %>">
+              <%= group_order.restaurant.name %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/group_orders/<%= group_order.id %>" class="btn btn-primary">Show</a>
           <a href="/group_orders/<%= group_order.id %>/edit" class="btn btn-warning">Edit</a>

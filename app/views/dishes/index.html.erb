@@ -17,7 +17,13 @@
       <% @dishes.each do |dish| %>
       <tr>
         <td><%= dish.name %></td>
-        <td><%= dish.menu.restaurant_id %></td>
+        <td>
+          <% if dish.menu.present? %>
+            <a href="/menus/<%= dish.menu.id %>">
+              <%= dish.menu.restaurant_id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/dishes/<%= dish.id %>" class="btn btn-primary">Show</a>
           <a href="/dishes/<%= dish.id %>/edit" class="btn btn-warning">Edit</a>
