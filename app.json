@@ -1,0 +1,1 @@
+{"name":"Group lunch order","repository":"https://github.com/elliols0n/group_lunch_order","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
