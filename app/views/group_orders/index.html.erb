@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>
+    Group orders
+    <a href="/group_orders/new" class="btn btn-lg btn-success">New Group order</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Receipt</th>
+        <th>Price</th>
+        <th>Restaurant</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @group_orders.each do |group_order| %>
+      <tr>
+        <td><%= group_order.receipt %></td>
+        <td><%= group_order.price %></td>
+        <td><%= group_order.restaurant_id %></td>
+        <td>
+          <a href="/group_orders/<%= group_order.id %>" class="btn btn-primary">Show</a>
+          <a href="/group_orders/<%= group_order.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_group_order/<%= group_order.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

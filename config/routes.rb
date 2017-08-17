@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Group_order resource:
+  # CREATE
+  get "/group_orders/new", :controller => "group_orders", :action => "new"
+  post "/create_group_order", :controller => "group_orders", :action => "create"
+
+  # READ
+  get "/group_orders", :controller => "group_orders", :action => "index"
+  get "/group_orders/:id", :controller => "group_orders", :action => "show"
+
+  # UPDATE
+  get "/group_orders/:id/edit", :controller => "group_orders", :action => "edit"
+  post "/update_group_order/:id", :controller => "group_orders", :action => "update"
+
+  # DELETE
+  get "/delete_group_order/:id", :controller => "group_orders", :action => "destroy"
+  #------------------------------
+
   # Routes for the Dish resource:
   # CREATE
   get "/dishes/new", :controller => "dishes", :action => "new"
