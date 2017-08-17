@@ -1,6 +1,9 @@
 class Order < ApplicationRecord
   # Direct associations
 
+  belongs_to :group_order,
+             :counter_cache => true
+
   belongs_to :dish,
              :counter_cache => true
 
