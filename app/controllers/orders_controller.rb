@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.page(params[:page]).per(10)
 
     render("orders/index.html.erb")
   end

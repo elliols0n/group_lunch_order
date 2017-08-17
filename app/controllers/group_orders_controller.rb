@@ -1,6 +1,6 @@
 class GroupOrdersController < ApplicationController
   def index
-    @group_orders = GroupOrder.all
+    @group_orders = GroupOrder.page(params[:page]).per(10)
 
     render("group_orders/index.html.erb")
   end
