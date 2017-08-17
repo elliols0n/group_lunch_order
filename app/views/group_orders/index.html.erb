@@ -17,7 +17,7 @@
 
       <% @group_orders.each do |group_order| %>
       <tr>
-        <td><%= group_order.receipt %></td>
+        <td><img src='<%= group_order.receipt %>' class='img-responsive'></td>
         <td><%= group_order.price %></td>
         <td><%= group_order.restaurant.name %></td>
         <td>

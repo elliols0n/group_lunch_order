@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_group_order" method="post">
+    <form action="/create_group_order" method="post" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -24,7 +24,7 @@
           Receipt
         </label>
 
-        <input type="text" id="receipt" name="receipt" placeholder="Receipt" class="form-control" value="<%= @group_order.receipt %>">
+        <input type="file" id="receipt" name="receipt" class="form-control">
       </div>
 
       <!-- Label and input for price -->

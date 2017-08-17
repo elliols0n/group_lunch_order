@@ -1,4 +1,6 @@
 class GroupOrder < ApplicationRecord
+  mount_uploader :receipt, ReceiptUploader
+
   # Direct associations
 
   has_many   :orders,
