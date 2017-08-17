@@ -6,6 +6,7 @@ class GroupOrdersController < ApplicationController
   end
 
   def show
+    @order = Order.new
     @group_order = GroupOrder.find(params[:id])
 
     render("group_orders/show.html.erb")

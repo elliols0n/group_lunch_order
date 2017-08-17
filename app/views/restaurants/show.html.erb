@@ -51,6 +51,38 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_group_order" method="post" enctype="multipart/form-data">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for receipt -->
+      <div class="form-group">
+        <label for="receipt" class="control-label">
+          Receipt
+        </label>
+
+        <input type="file" id="receipt" name="receipt" class="form-control">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Group Order
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
