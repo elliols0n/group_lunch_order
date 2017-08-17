@@ -49,8 +49,6 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-
-    @order.user_id = params[:user_id]
     @order.dish_id = params[:dish_id]
     @order.user_comment = params[:user_comment]
     @order.group_order_id = params[:group_order_id]
