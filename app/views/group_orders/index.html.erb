@@ -19,7 +19,7 @@
       <tr>
         <td><%= group_order.receipt %></td>
         <td><%= group_order.price %></td>
-        <td><%= group_order.restaurant_id %></td>
+        <td><%= group_order.restaurant.name %></td>
         <td>
           <a href="/group_orders/<%= group_order.id %>" class="btn btn-primary">Show</a>
           <a href="/group_orders/<%= group_order.id %>/edit" class="btn btn-warning">Edit</a>
