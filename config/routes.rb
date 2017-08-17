@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "restaurants#index"
   # Routes for the Group_order resource:
   # CREATE
   get "/group_orders/new", :controller => "group_orders", :action => "new"
