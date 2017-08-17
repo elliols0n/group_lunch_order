@@ -51,7 +51,7 @@
           Group order
         </label>
 
-        <input type="text" id="group_order_id" name="group_order_id" placeholder="Group order" class="form-control" value="<%= @order.group_order_id %>">
+        <%= select_tag(:group_order_id, options_from_collection_for_select(GroupOrder.all, :id, :created_at, @order.group_order_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-success">
