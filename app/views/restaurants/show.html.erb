@@ -8,6 +8,15 @@
       <dt>Name</dt>
       <dd><%= @restaurant.name %></dd>
 
+      <dt>Cuisine</dt>
+      <dd>
+        <% if @restaurant.cuisine.present? %>
+          <a href="/cuisines/<%= @restaurant.cuisine_id %>">
+            <%= @restaurant.cuisine.created_at %>
+          </a>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -80,6 +89,81 @@
 
       <button class="btn btn-block btn-success">
         Create Group Order
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- A Restaurant has many orders -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Orders
+      </li>
+
+      <% @restaurant.orders.each do |order| %>
+        <li class="list-group-item">
+          <a href="/orders/<%= order.id %>">
+            <%= order.user_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/orders/<%= order.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/orders/<%= order.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_order/<%= order.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_order" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+      <!-- Label and input for dish_id -->
+      <div class="form-group">
+        <label for="dish_id" class="control-label">
+          Dish
+        </label>
+
+        <%= select_tag(:dish_id, options_from_collection_for_select(Dish.all, :id, :name), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for user_comment -->
+      <div class="form-group">
+        <label for="user_comment" class="control-label">
+          User comment
+        </label>
+
+        <input type="text" id="user_comment" name="user_comment" placeholder="User comment" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for group_order_id -->
+      <div class="form-group">
+        <label for="group_order_id" class="control-label">
+          Group order
+        </label>
+
+        <%= select_tag(:group_order_id, options_from_collection_for_select(GroupOrder.all, :id, :created_at), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for restaurant_id -->
+      <input type="hidden" name="restaurant_id" value="<%= @restaurant.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Order
       </button>
     </form>
       </li>

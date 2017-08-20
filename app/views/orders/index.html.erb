@@ -59,6 +59,11 @@
     </div>
 
 <div class="form-group">
+      <%= f.label :restaurant_name_cont, "Restaurant name contains" %>
+      <%= f.text_field :restaurant_name_cont, :class => "form-control", :placeholder => "Restaurant name contains" %>
+    </div>
+
+<div class="form-group">
       <%= f.label :dish_name_cont, "Dish name contains" %>
       <%= f.text_field :dish_name_cont, :class => "form-control", :placeholder => "Dish name contains" %>
     </div>
@@ -121,6 +126,7 @@
         <th>Dish</th>
         <th>User comment</th>
         <th>Group order</th>
+        <th>Restaurant</th>
         <th>Actions</th>
       </tr>
 
@@ -145,6 +151,13 @@
           <% if order.group_order.present? %>
             <a href="/group_orders/<%= order.group_order.id %>">
               <%= order.group_order.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if order.restaurant.present? %>
+            <a href="/restaurants/<%= order.restaurant.id %>">
+              <%= order.restaurant.name %>
             </a>
           <% end %>
         </td>

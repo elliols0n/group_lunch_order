@@ -35,6 +35,15 @@
         <% end %>
       </dd>
 
+      <dt>Restaurant</dt>
+      <dd>
+        <% if @order.restaurant.present? %>
+          <a href="/restaurants/<%= @order.restaurant_id %>">
+            <%= @order.restaurant.name %>
+          </a>
+        <% end %>
+      </dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">

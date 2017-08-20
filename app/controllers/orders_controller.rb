@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
   def index
     @q = Order.ransack(params[:q])
-    @orders = @q.result(:distinct => true).includes(:user, :dish, :group_order).page(params[:page]).per(10)
+    @orders = @q.result(:distinct => true).includes(:user, :restaurant, :dish, :group_order).page(params[:page]).per(10)
 
     render("orders/index.html.erb")
   end
@@ -35,6 +35,7 @@ class OrdersController < ApplicationController
     @order.dish_id = params[:dish_id]
     @order.user_comment = params[:user_comment]
     @order.group_order_id = params[:group_order_id]
+    @order.restaurant_id = params[:restaurant_id]
 
     save_status = @order.save
 
@@ -63,6 +64,7 @@ class OrdersController < ApplicationController
     @order.dish_id = params[:dish_id]
     @order.user_comment = params[:user_comment]
     @order.group_order_id = params[:group_order_id]
+    @order.restaurant_id = params[:restaurant_id]
 
     save_status = @order.save
 
