@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :dish_id
       t.string :user_comment
       t.integer :group_order_id
+      t.integer :restaurant_id
 
       t.timestamps
 
