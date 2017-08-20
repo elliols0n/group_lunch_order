@@ -1,12 +1,13 @@
 class RestaurantsController < ApplicationController
   def index
     @q = Restaurant.ransack(params[:q])
-    @restaurants = @q.result(:distinct => true).includes(:menu, :group_orders).page(params[:page]).per(10)
+    @restaurants = @q.result(:distinct => true).includes(:menu, :group_orders, :orders, :cuisine).page(params[:page]).per(10)
 
     render("restaurants/index.html.erb")
   end
 
   def show
+    @order = Order.new
     @group_order = GroupOrder.new
     @restaurant = Restaurant.find(params[:id])
 
@@ -23,6 +24,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
 
     @restaurant.name = params[:name]
+    @restaurant.cuisine_id = params[:cuisine_id]
 
     save_status = @restaurant.save
 
@@ -50,6 +52,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     @restaurant.name = params[:name]
+    @restaurant.cuisine_id = params[:cuisine_id]
 
     save_status = @restaurant.save
 

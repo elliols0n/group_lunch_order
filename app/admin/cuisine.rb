@@ -1,6 +1,6 @@
-ActiveAdmin.register Order do
+ActiveAdmin.register Cuisine do
 
- permit_params :user_id, :dish_id, :user_comment, :group_order_id, :restaurant_id
+ permit_params 
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
